@@ -1,0 +1,38 @@
+{
+  "name": "uikit",
+  "version": "0.0.1",
+  "description": "fastlaw.io design library",
+  "types": "lib",
+  "scripts": {
+    "start": "NODE_ENV=development webpack --mode development --watch",
+    "build": "NODE_ENV=production webpack --mode production"
+  },
+  "main": "index.js",
+  "author": "Vadim Polulyakh",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16.8.6",
+    "react-dom": ">=16.8.6"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.9",
+    "@types/node-sass": "^4.11.0",
+    "@types/react": "^16.8.23",
+    "classnames": "^2.2.6",
+    "css-loader": "^3.0.0",
+    "css-modules-typescript-loader": "^2.0.4",
+    "file-loader": "^4.0.0",
+    "node-sass": "^4.12.0",
+    "npm-cli": "^0.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "ttf-loader": "^1.0.2",
+    "typescript": "^3.5.3",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.6"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,55 @@
+@import "../vars.scss";
+.inputWrapper {
+  position: relative;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 1.5rem;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: white;
+  padding: 10px 15px;
+  outline: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  &>input {
+    margin-right: 10px;
+  }
+  &:focus {
+    border-color: $primary;
+  }
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder {
+    color: $textSecondary;
+  }
+  font-size: 0.875rem;
+  &.errorHighlight {
+    border-color: $red;
+  }
+}
+
+.disabled {
+  background: rgba(255, 255, 255, 0.3);
+  
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
+.errorMessage {
+  color: $red;
+  margin: 0;
+  line-height: 1.375rem;
+}
