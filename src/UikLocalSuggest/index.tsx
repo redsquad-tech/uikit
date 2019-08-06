@@ -1,9 +1,8 @@
 
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import classnames from 'classnames';
 
 import OptionList from './OptionList';
-import UikButton from '../UikButton';
 import UikOutsideClickHandler from '../UikOutsideClickHandler';
 import UikContentTitle from '../UikContentTitle';
 import UikInput from '../UikInput';

@@ -4,7 +4,6 @@ import DatePicker from 'react-date-picker';
 import UikContentTitle from '../UikContentTitle';
 
 import s from './input.module.scss';
-import './ko.scss';
 
 interface State {
   value: Date;

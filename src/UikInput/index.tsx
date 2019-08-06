@@ -30,6 +30,7 @@ interface UikInputProps {
   value?: string;
   valueCheck?: Check;
   onInput?: (value: string) => void;
+  disabled?: boolean;
 }
 
 class Input extends Component<UikInputProps, State> {
