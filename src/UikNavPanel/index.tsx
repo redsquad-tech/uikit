@@ -1,14 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import * as React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-panel.module.scss'
+import cls from './nav-panel.module.scss';
 
-// @flow
 type UikNavPanelProps = {
   children?: React.ReactNode,
   className?: string,
-  positionRight?: boolean
-}
+  positionRight?: boolean,
+};
 
 const UikNavPanel = ({
   children,
@@ -24,12 +23,12 @@ const UikNavPanel = ({
   >
     {children}
   </div>
-)
+);
 
 UikNavPanel.defaultProps = {
   className: null,
   positionRight: false,
   children: null,
-}
+};
 
-export default UikNavPanel
+export default UikNavPanel;

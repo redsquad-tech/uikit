@@ -1,18 +1,18 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-link.module.scss'
+import cls from './nav-link.module.scss';
 
 export interface UikNavLinkProps {
-  className?: string,
-  children?: React.ReactNode,
-  rightEl?: React.ReactNode,
-  highlighted?: boolean,
-  icon?: React.ReactNode,
-  to?: string,
-  disabled?: boolean,
-  onClick?: () => void,
-  Component: React.ElementType
+  className?: string;
+  children?: React.ReactNode;
+  rightEl?: React.ReactNode;
+  highlighted?: boolean;
+  icon?: React.ReactNode;
+  to?: string;
+  disabled?: boolean;
+  onClick?: () => void;
+  Component: React.ElementType;
 }
 
 const UikNavLink = ({
@@ -28,7 +28,7 @@ const UikNavLink = ({
   <Component
     className={ classnames(cls.wrapper, className, {
       [cls.highlighted]: highlighted,
-      [cls.disabled]: disabled
+      [cls.disabled]: disabled,
     }) }
     { ...rest }
   >
@@ -48,7 +48,7 @@ const UikNavLink = ({
     </span>
     )}
   </Component>
-)
+);
 
 UikNavLink.defaultProps = {
   className: null,
@@ -56,6 +56,6 @@ UikNavLink.defaultProps = {
   highlighted: false,
   icon: null,
   children: null,
-}
+};
 
-export default UikNavLink
+export default UikNavLink;

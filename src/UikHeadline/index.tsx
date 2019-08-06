@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import s from './headline.module.scss'
+import s from './headline.module.scss';
 
-// @flow
 type UikHeadlineProps = {
   className?: string,
   children: React.ReactNode,
-}
+};
 
 const UikHeadline = ({
   children,
@@ -20,11 +19,10 @@ const UikHeadline = ({
   >
     {children}
   </h2>
-)
-
+);
 
 UikHeadline.defaultProps = {
   className: null,
-}
+};
 
-export default UikHeadline
+export default UikHeadline;

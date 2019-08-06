@@ -1,14 +1,13 @@
-import React from 'react'
-import classnames from 'classnames'
-// @flow
+import React from 'react';
+import classnames from 'classnames';
 
-import UikButton from '../UikButton'
+import UikButton from '../UikButton';
 
-import cls from './menuDrop.module.scss'
+import cls from './menuDrop.module.scss';
 
 interface DefaultDisplayComponentProps {
-  className?: string
-  onClick: () => void
+  className?: string;
+  onClick: () => void;
 }
 
 const DefaultDisplayComponent = ({ className, ...rest }: DefaultDisplayComponentProps) => (
@@ -19,6 +18,6 @@ const DefaultDisplayComponent = ({ className, ...rest }: DefaultDisplayComponent
   >
     &middot;&middot;&middot;
   </UikButton>
-)
+);
 
-export default DefaultDisplayComponent
+export default DefaultDisplayComponent;

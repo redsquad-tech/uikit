@@ -1,41 +1,40 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React, { ChangeEvent, SyntheticEvent } from 'react';
+import classnames from 'classnames';
 
-import s from './btn.module.scss'
+import s from './btn.module.scss';
 
-import UikLoaderDots from '../UikLoaderDots'
+import UikLoaderDots from '../UikLoaderDots';
 
-// @flow
 interface UikButtonProps {
-  children?: React.ReactNode,
-  className?: string,
-  contentClassName?: string,
-  href?: string,
+  children?: React.ReactNode;
+  className?: string;
+  contentClassName?: string;
+  href?: string;
   // appearence
 
-  xs?: boolean,
-  lg?: boolean,
+  xs?: boolean;
+  lg?: boolean;
 
-  primary?: boolean,
-  error?: boolean,
-  success?: boolean,
-  transparent?: boolean,
+  primary?: boolean;
+  error?: boolean;
+  success?: boolean;
+  transparent?: boolean;
 
-  clear?: boolean,
-  isLoading?: boolean,
+  clear?: boolean;
+  isLoading?: boolean;
   // icon properties
-  icon?: React.ReactNode,
-  iconRight?: boolean,
-  iconOnly?: boolean,
-  noBorder?: boolean,
-  dark?: boolean,
-  isExpanded?: boolean,
+  icon?: React.ReactNode;
+  iconRight?: boolean;
+  iconOnly?: boolean;
+  noBorder?: boolean;
+  dark?: boolean;
+  isExpanded?: boolean;
 
-  disabled?: boolean,
+  disabled?: boolean;
 
-  internalInputRef: React.RefObject<HTMLInputElement>
+  internalInputRef: React.RefObject<HTMLInputElement>;
 
-  onClick?: (v: any) => void
+  onClick?: (v: any) => void;
 }
 
 export default class Button<T = null> extends React.PureComponent<UikButtonProps> {
@@ -61,7 +60,7 @@ export default class Button<T = null> extends React.PureComponent<UikButtonProps
       onClick,
       internalInputRef,
       ...rest
-    } = this.props
+    } = this.props;
 
     const classes = classnames(
       s.base,
@@ -82,17 +81,17 @@ export default class Button<T = null> extends React.PureComponent<UikButtonProps
         [s.isExpanded]: isExpanded,
       },
       className,
-    )
+    );
 
     // put props together so we don't have to repeat it
     const btnProps = {
       className: classes,
       ...rest,
-    }
+    };
 
     return (
       <button
-        onClick={(e) => onClick && onClick(e)}
+        onClick={(e: SyntheticEvent<HTMLButtonElement>) => onClick && onClick(e)}
         { ...btnProps }
       >
         {
@@ -123,10 +122,10 @@ export default class Button<T = null> extends React.PureComponent<UikButtonProps
           capture="filesystem"
           ref={internalInputRef}
 
-          onChange={ (e) => e && onClick && onClick(e) }
+          onChange={(e:ChangeEvent<HTMLInputElement>) => e && onClick && onClick(e) }
         />)}
 
       </button>
-    )
+    );
   }
 }

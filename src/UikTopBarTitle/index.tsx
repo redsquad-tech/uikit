@@ -1,17 +1,15 @@
 
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './top-bar-title.module.scss'
+import cls from './top-bar-title.module.scss';
 
-
-// @flow
 type UikTopBarTitleProps = {
   children?: React.ReactNode,
   className?: string,
   Component: React.ElementType,
-  large?: Boolean
-}
+  large?: Boolean,
+};
 
 const UikTopBarTitle = ({
   children,
@@ -28,13 +26,13 @@ const UikTopBarTitle = ({
   >
     {children}
   </Component>
-)
+);
 
 UikTopBarTitle.defaultProps = {
   className: null,
   children: null,
   large: false,
-  Component: 'h2'
-}
+  Component: 'h2',
+};
 
-export default UikTopBarTitle
+export default UikTopBarTitle;

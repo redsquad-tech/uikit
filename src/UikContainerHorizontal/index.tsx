@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './container-h.module.scss'
+import cls from './container-h.module.scss';
 
-// @flow
 type UikContainerHorizontalProps = {
   className?: string,
   children?: React.ReactNode,
-}
+};
 
 const UikContainerHorizontal = ({
   className,
@@ -20,11 +19,11 @@ const UikContainerHorizontal = ({
   >
     {children}
   </div>
-)
+);
 
 UikContainerHorizontal.defaultProps = {
   className: null,
   children: null,
-}
+};
 
-export default UikContainerHorizontal
+export default UikContainerHorizontal;

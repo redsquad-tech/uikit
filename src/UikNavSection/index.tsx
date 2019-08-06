@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import * as React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-section.module.scss'
+import cls from './nav-section.module.scss';
 
-// @flow
 type UikNavSectionProps = {
   children?: React.ReactNode,
-  className?: string
-}
+  className?: string,
+};
 
 const UikNavSection = ({
   children,
@@ -20,11 +19,11 @@ const UikNavSection = ({
   >
     {children}
   </section>
-)
+);
 
 UikNavSection.defaultProps = {
   className: null,
   children: null,
-}
+};
 
-export default UikNavSection
+export default UikNavSection;

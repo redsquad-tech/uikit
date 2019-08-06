@@ -1,14 +1,13 @@
-import classnames from 'classnames'
-// @flow
-import * as React from 'react'
+import classnames from 'classnames';
+import React from 'react';
 
-import s from './avatar.module.scss'
+import s from './avatar.module.scss';
 
 type UikAvatarImageProps = {
   className?: string,
   name?: React.ReactNode,
   imgUrl: string | Array<string>,
-}
+};
 
 const UikAvatarImage = ({ imgUrl, name }: UikAvatarImageProps) => (
   Array.isArray(imgUrl) ? (
@@ -39,10 +38,10 @@ const UikAvatarImage = ({ imgUrl, name }: UikAvatarImageProps) => (
       src={ imgUrl }
     />
   )
-)
+);
 
 UikAvatarImage.defaultProps = {
   name: null,
-}
+};
 
-export default UikAvatarImage
+export default UikAvatarImage;

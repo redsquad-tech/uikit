@@ -1,22 +1,21 @@
 /* eslint-disable max-len */
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import UikButton from '../UikButton'
+import UikButton from '../UikButton';
 // cls
-import cls from './select.module.scss'
+import cls from './select.module.scss';
 
-// @flow
-import { UikSelectOptionValueType, UikSelectOptionType } from './flowTypes'
+import { UikSelectOptionValueType, UikSelectOptionType } from './flowTypes';
 
 interface OptionListProps {
-  selected: UikSelectOptionType[],
-  options: UikSelectOptionType[],
-  excluded: UikSelectOptionValueType[],
-  optionClick: (key: UikSelectOptionType) => void,
-  onAllClick: () => void,
-  position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight',
-  optionProps: React.HTMLAttributes<HTMLDivElement>
+  selected: UikSelectOptionType[];
+  options: UikSelectOptionType[];
+  excluded: UikSelectOptionValueType[];
+  optionClick: (key: UikSelectOptionType) => void;
+  onAllClick: () => void;
+  position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+  optionProps: React.HTMLAttributes<HTMLDivElement>;
 }
 
 class OptionList extends React.Component<OptionListProps> {
@@ -24,7 +23,7 @@ class OptionList extends React.Component<OptionListProps> {
     excluded: [],
     position: 'bottomLeft',
     optionProps: {},
-  }
+  };
 
   renderOptionWrapper = ({ label }: UikSelectOptionType) => (
     <div className={ cls.label }>
@@ -39,21 +38,21 @@ class OptionList extends React.Component<OptionListProps> {
         className: optionClassName,
         ...optionPropsRest
       },
-    } = this.props
+    } = this.props;
 
     const filteredOptions = options.filter((option) => {
       if (excluded.indexOf(option.value) > -1) {
-        return false
+        return false;
       }
-      return true
-    })
+      return true;
+    });
 
     return filteredOptions.map((i) => {
-      const indexIsSelected = selected.find(k => i.value === k.value)
+      const indexIsSelected = selected.find(k => i.value === k.value);
       const onClick = (key: UikSelectOptionType) => () => {
-        optionClick(key)
-      }
-      
+        optionClick(key);
+      };
+
       return (
         <UikButton
           key={ i.value.toString() }
@@ -68,12 +67,12 @@ class OptionList extends React.Component<OptionListProps> {
             ) : null}
           </div>
         </UikButton>
-      )
-    })
+      );
+    });
   }
 
   render() {
-    const { position } = this.props
+    const { position } = this.props;
     return (
       <div className={ classnames(cls.optionListWrapper, {
         [cls[position]]: position,
@@ -83,8 +82,8 @@ class OptionList extends React.Component<OptionListProps> {
           {this.renderOptions()}
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default OptionList
+export default OptionList;

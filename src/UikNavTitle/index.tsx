@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-title.module.scss'
+import cls from './nav-title.module.scss';
 
-// @flow
 type UikNavTitleProps = {
   children?: React.ReactNode,
-  className?: string
-}
+  className?: string,
+};
 
 const UikNavTitle = ({
   children,
@@ -20,11 +19,11 @@ const UikNavTitle = ({
   >
     {children}
   </span>
-)
+);
 
 UikNavTitle.defaultProps = {
   className: null,
   children: null,
-}
+};
 
-export default UikNavTitle
+export default UikNavTitle;

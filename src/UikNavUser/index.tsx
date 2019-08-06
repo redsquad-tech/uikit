@@ -1,17 +1,16 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-user.module.scss'
+import cls from './nav-user.module.scss';
 
-// @flow
 type UikNavUserProps = {
   children?: React.ReactNode,
   className?: string,
   Component?: React.ElementType,
   name?: React.ReactNode,
   imgUrl?: string,
-  textTop?: React.ReactNode
-}
+  textTop?: React.ReactNode,
+};
 
 const UikNavUser = ({
   children,
@@ -52,7 +51,7 @@ const UikNavUser = ({
     }
     {children}
   </div>
-)
+);
 
 UikNavUser.defaultProps = {
   className: null,
@@ -60,6 +59,6 @@ UikNavUser.defaultProps = {
   name: null,
   imgUrl: null,
   textTop: null,
-}
+};
 
-export default UikNavUser
+export default UikNavUser;

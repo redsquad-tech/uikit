@@ -1,14 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import s from './form-input-group.module.scss'
+import s from './form-input-group.module.scss';
 
-// @flow
 interface UikFormInputGroupProps {
-  className?: string,
-  children: React.ReactNode,
-  direction?: 'vertical' | 'horizontal',
-  horizontal?: boolean
+  className?: string;
+  children: React.ReactNode;
+  direction?: 'vertical' | 'horizontal';
+  horizontal?: boolean;
 }
 
 const UikFormInputGroup = ({
@@ -27,6 +26,6 @@ const UikFormInputGroup = ({
   >
     {children}
   </div>
-)
+);
 
-export default UikFormInputGroup
+export default UikFormInputGroup;

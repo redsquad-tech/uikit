@@ -1,14 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-link-two-container.module.scss'
+import cls from './nav-link-two-container.module.scss';
 
-// @flow
 type UikNavLinkTwoContainerProps = {
   children?: React.ReactNode,
   className?: string,
-  positionRight?: boolean
-}
+  positionRight?: boolean,
+};
 
 const UikNavLinkTwoContainer = ({
   children,
@@ -22,12 +21,12 @@ const UikNavLinkTwoContainer = ({
   >
     {children}
   </div>
-)
+);
 
 UikNavLinkTwoContainer.defaultProps = {
   className: null,
   positionRight: false,
   children: null,
-}
+};
 
-export default UikNavLinkTwoContainer
+export default UikNavLinkTwoContainer;

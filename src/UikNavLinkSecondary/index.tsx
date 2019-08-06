@@ -1,17 +1,16 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-link-secondary.module.scss'
+import cls from './nav-link-secondary.module.scss';
 
-// @flow
 type UikNavLinkProps = {
   className?: string,
   children?: React.ReactNode,
   rightEl?: React.ReactNode,
-  highlighted?: boolean, 
+  highlighted?: boolean,
   disabled?: boolean,
   onClick?: () => void,
-}
+};
 
 const UikNavLink = ({
   rightEl,
@@ -35,13 +34,13 @@ const UikNavLink = ({
     </span>
     )}
   </a>
-)
+);
 
 UikNavLink.defaultProps = {
   className: null,
   rightEl: null,
   highlighted: false,
   children: null,
-}
+};
 
-export default UikNavLink
+export default UikNavLink;

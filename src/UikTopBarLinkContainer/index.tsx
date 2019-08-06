@@ -1,15 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './top-bar-link-container.module.scss'
+import cls from './top-bar-link-container.module.scss';
 
-// @flow
-type UikTopBarLinkContainerProps<T extends React.ElementType = 'div'> = {
+type UikTopBarLinkContainerProps = {
   className?: string,
   children?: React.ReactNode,
   Component: React.ElementType,
-}
-
+};
 
 const UikTopBarLinkContainer = ({
   children,
@@ -23,11 +21,11 @@ const UikTopBarLinkContainer = ({
   >
     {children}
   </Component>
-)
+);
 
 UikTopBarLinkContainer.defaultProps = {
   className: null,
   children: null,
-}
+};
 
-export default UikTopBarLinkContainer
+export default UikTopBarLinkContainer;

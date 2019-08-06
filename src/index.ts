@@ -36,3 +36,4 @@ export { default as UikTopBarSection } from './UikTopBarSection'
 export { default as UikTopBarTitle } from './UikTopBarTitle'
 export { default as UikRadio } from './UikRadio'
 export { default as UikCheckbox } from './UikCheckbox'
+export { default as UikLoaderDots} from './UikLoaderDots';

@@ -1,14 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import * as React from 'react';
+import classnames from 'classnames';
 
-import cls from './top-bar.module.scss'
+import cls from './top-bar.module.scss';
 
-// @flow
 type UikTopBarProps = {
   center?: Boolean,
   className?: string,
-  children?: React.ReactNode
-}
+  children?: React.ReactNode,
+};
 
 const UikTopBar = ({
   children,
@@ -24,12 +23,12 @@ const UikTopBar = ({
   >
     {children}
   </div>
-)
+);
 
 UikTopBar.defaultProps = {
   className: null,
   children: null,
   center: false,
-}
+};
 
-export default UikTopBar
+export default UikTopBar;

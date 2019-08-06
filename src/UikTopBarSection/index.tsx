@@ -4,8 +4,6 @@ import classnames from 'classnames'
 
 import cls from './top-bar-section.module.scss'
 
-type Com = React.ElementType | 'div'
-
 interface UikTopBarSectionProps {
   children?: React.ReactNode,
   className?: string,

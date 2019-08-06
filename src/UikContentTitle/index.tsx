@@ -1,9 +1,9 @@
-import * as React from 'react'
+import React from 'react';
 
-import s from './content-title.module.scss'
+import s from './content-title.module.scss';
 
 interface UikContentTitleProps {
-  children: React.ReactNode,
+  children: React.ReactNode;
 }
 
 const UikContentTitle = ({ children, ...rest }: UikContentTitleProps) =>
@@ -12,7 +12,6 @@ const UikContentTitle = ({ children, ...rest }: UikContentTitleProps) =>
     {...rest}
   >
     {children}
-  </span>
+  </span>;
 
-
-export default UikContentTitle
+export default UikContentTitle;

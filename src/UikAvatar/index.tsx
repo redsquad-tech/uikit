@@ -1,16 +1,15 @@
-import * as React from 'react'
-import classnames from 'classnames'
-// @flow
+import React from 'react';
+import classnames from 'classnames';
 
-import UikAvatarStatus from './UikAvatarStatus'
-import UikAvatarImage from './UikAvatarImage'
+import UikAvatarStatus from './UikAvatarStatus';
+import UikAvatarImage from './UikAvatarImage';
 
-import style from './avatar.module.scss'
+import style from './avatar.module.scss';
 
 type UikAvatarPlaceholderProps = {
   content?: React.ReactNode,
   color?: 'green' | 'blue' | 'orange' | 'violet' | 'red',
-}
+};
 
 export type UikAvatarProps = {
   className?: string,
@@ -23,7 +22,7 @@ export type UikAvatarProps = {
   textBottom?: React.ReactNode,
   actionIcon?: React.ReactNode,
   size?: 'small' | 'large' | 'larger' | 'extraLarge' | 'jumbo',
-}
+};
 
 const UikAvatar = ({
   name,
@@ -40,8 +39,8 @@ const UikAvatar = ({
 }: UikAvatarProps) => (
   <div
     className={ classnames(style.wrapper, className, {
-      ['highlighted']: highlighted,
-      ['size']: size,
+      [style.highlighted]: highlighted,
+      // ['size']: size,
     }) }
     { ...rest }
   >
@@ -95,7 +94,7 @@ const UikAvatar = ({
       )
     }
   </div>
-)
+);
 
 UikAvatar.defaultProps = {
   className: null,
@@ -108,6 +107,6 @@ UikAvatar.defaultProps = {
   imgUrl: null,
   size: null,
   textBottom: null,
-}
+};
 
-export default UikAvatar
+export default UikAvatar;

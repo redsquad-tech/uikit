@@ -1,14 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './scroll.module.scss'
+import cls from './scroll.module.scss';
 
-// @flow
 type UikScrollAreaProps = {
   children?: React.ReactNode,
   className?: string,
-}
-
+};
 
 class UikScrollArea extends React.PureComponent<UikScrollAreaProps> {
   render() {
@@ -16,15 +14,15 @@ class UikScrollArea extends React.PureComponent<UikScrollAreaProps> {
       children,
       className,
       ...rest
-    } = this.props
+    } = this.props;
     return (
       <div
         className={ classnames(cls.wrapper, className) }
         { ...rest }
       >
         {children}
-      </div>)
+      </div>);
   }
 }
 
-export default UikScrollArea
+export default UikScrollArea;

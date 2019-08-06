@@ -1,12 +1,11 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './widget-table.module.scss'
+import cls from './widget-table.module.scss';
 
-// @flow
 interface UikWidgetTableProps {
-  children?: React.ReactNode,
-  className?: string,
+  children?: React.ReactNode;
+  className?: string;
 }
 
 const UikWidgetTable = ({
@@ -20,6 +19,6 @@ const UikWidgetTable = ({
   >
     {children}
   </table>
-)
+);
 
-export default UikWidgetTable
+export default UikWidgetTable;

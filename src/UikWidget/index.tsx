@@ -1,9 +1,7 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import s from './widget.module.scss'
-
-// @flow
+import s from './widget.module.scss';
 
 type UikWidgetProps = {
   className?: string,
@@ -11,7 +9,7 @@ type UikWidgetProps = {
   padding?: boolean,
   margin?: boolean,
   disabled?: boolean,
-}
+};
 
 const UikWidget = ({
   children,
@@ -31,13 +29,13 @@ const UikWidget = ({
   >
     {children}
   </div>
-)
+);
 
 UikWidget.defaultProps = {
   className: null,
   children: null,
   padding: false,
   margin: false,
-}
+};
 
-export default UikWidget
+export default UikWidget;

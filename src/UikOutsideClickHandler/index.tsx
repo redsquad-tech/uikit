@@ -7,99 +7,99 @@
 *
 */
 
-import * as React from 'react'
+import * as React from 'react';
 
-// @flow
 interface UikOutsideClickHandlerProps {
-  children?: React.ReactNode,
-  onOutsideClick: (e: Event) => void,
-  onOutsideScroll?: boolean,
-  onWindowResize?: boolean,
+  children?: React.ReactNode;
+  onOutsideClick: (e: Event) => void;
+  onOutsideScroll?: boolean;
+  onWindowResize?: boolean;
 }
 
-export default class UikOutsideClickHandler extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLDivElement>> {
+export default class UikOutsideClickHandler
+extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLDivElement>> {
 
   static defaultProps = {
     onOutsideScroll: true,
     onWindowResize: true,
-  }
+  };
 
   componentDidMount() {
-    const { onOutsideClick } = this.props
+    const { onOutsideClick } = this.props;
     if (onOutsideClick) {
-      this.bindListeners()
+      this.bindListeners();
     }
   }
 
   componentDidUpdate() {
-    const { onOutsideClick } = this.props
+    const { onOutsideClick } = this.props;
     if (typeof onOutsideClick === 'function') {
-      this.bindListeners()
+      this.bindListeners();
     } else {
-      this.removeListeners()
+      this.removeListeners();
     }
   }
 
   componentWillUnmount() {
-    this.removeListeners()
+    this.removeListeners();
   }
 
-  private ref = React.createRef<HTMLDivElement>()
+  private ref = React.createRef<HTMLDivElement>();
 
   handleOuterActions = (e: Event) => {
-    const { onOutsideClick } = this.props
+    const { onOutsideClick } = this.props;
     if (typeof onOutsideClick === 'function') {
-      onOutsideClick(e)
+      onOutsideClick(e);
     }
   }
 
   handleOutsideClick = (e: Event) => {
-    const { onOutsideClick } = this.props
+    const { onOutsideClick } = this.props;
     if (typeof onOutsideClick !== 'function') {
-      return
+      return;
     }
 
-    const isDescendantOfRoot = !!e.target && this.ref.current
+    const isDescendantOfRoot = !!e.target && this.ref.current;
     if (!isDescendantOfRoot) {
-      onOutsideClick(e)
+      onOutsideClick(e);
     }
   }
 
   bindListeners = () => {
-    const { onOutsideScroll, onWindowResize } = this.props
+    const { onOutsideScroll, onWindowResize } = this.props;
     if (typeof document !== 'undefined' && document.addEventListener) {
       // `useCapture` flag is set to true so
       // that a `stopPropagation` in the children will
       // not prevent all outside click handlers from firing
-      document.addEventListener('click', this.handleOutsideClick, true)
+      document.addEventListener('click', this.handleOutsideClick, true);
       if (onOutsideScroll) {
-        window.addEventListener('scroll', this.handleOuterActions, true)
+        window.addEventListener('scroll', this.handleOuterActions, true);
       }
       if (onWindowResize) {
-        window.addEventListener('resize', this.handleOuterActions, true)
+        window.addEventListener('resize', this.handleOuterActions, true);
       }
     } else if (typeof document !== 'undefined') {
-      document.addEventListener('onclick', this.handleOutsideClick)
+      document.addEventListener('onclick', this.handleOutsideClick);
       if (onOutsideScroll) {
-        document.addEventListener('onclick', this.handleOutsideClick)
+        document.addEventListener('onclick', this.handleOutsideClick);
       }
     }
   }
 
   removeListeners = () => {
-    const { onOutsideScroll, onWindowResize } = this.props
+    const { onOutsideScroll, onWindowResize } = this.props;
     if (typeof document !== 'undefined' && document.removeEventListener) {
-      document.removeEventListener('click', this.handleOutsideClick)
+      document.removeEventListener('click', this.handleOutsideClick);
       if (onOutsideScroll) {
-        window.removeEventListener('scroll', this.handleOuterActions)
+        window.removeEventListener('scroll', this.handleOuterActions);
       }
       if (onWindowResize) {
-        window.removeEventListener('resize', this.handleOuterActions)
+        window.removeEventListener('resize', this.handleOuterActions);
       }
     } else if (typeof document !== 'undefined') {
-      document.removeEventListener('onclick', this.handleOutsideClick)
+      document.removeEventListener('onclick', this.handleOutsideClick);
       if (onOutsideScroll) {
-        document.removeEventListener('onclick', this.handleOutsideClick)
+        document.removeEventListener('onclick', this.handleOutsideClick);
       }
     }
   }
@@ -111,8 +111,7 @@ export default class UikOutsideClickHandler extends React.Component<UikOutsideCl
       onOutsideScroll,
       onWindowResize,
       ...rest
-    } = this.props
-
+    } = this.props;
 
     return (
       <div
@@ -121,6 +120,6 @@ export default class UikOutsideClickHandler extends React.Component<UikOutsideCl
       >
         {children}
       </div>
-    )
+    );
   }
 }

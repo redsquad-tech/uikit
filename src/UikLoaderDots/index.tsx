@@ -1,11 +1,10 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import s from './loader-dots.module.scss'
+import React from 'react';
+import classnames from 'classnames';
+import s from './loader-dots.module.scss';
 
-// @flow
 type UikLoaderDots = {
-  className?: String
-}
+  className?: String,
+};
 
 const LoaderDots = ({
   className,
@@ -15,11 +14,10 @@ const LoaderDots = ({
     <div className={ s.dotloader2 } />
     <div className={ s.dotloader3 } />
   </div>
-)
-
+);
 
 LoaderDots.defaultProps = {
   className: null,
-}
+};
 
-export default LoaderDots
+export default LoaderDots;

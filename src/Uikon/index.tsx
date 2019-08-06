@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import './uikon.scss'
+import React from 'react';
+import classnames from 'classnames';
+import './uikon.scss';
 
-// @flow
 type UikonProps = {
   className?: string,
   children?: React.ReactNode,
   color?: 'green' | 'blue' | 'orange' | 'violet' | 'red',
-}
+};
 
 const Uikon = ({
   children,
@@ -21,13 +20,12 @@ const Uikon = ({
   >
     {children}
   </i>
-)
-
+);
 
 Uikon.defaultProps = {
   className: null,
   children: null,
   color: null,
-}
+};
 
-export default Uikon
+export default Uikon;

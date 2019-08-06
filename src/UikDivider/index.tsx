@@ -1,15 +1,14 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import  s from'./divider.module.scss'
+import  s from'./divider.module.scss';
 
-// @flow
 type UikDividerProps = {
   className?: string,
   direction?: 'vertical' | 'horizontal',
   margin?: boolean,
   vertical?: boolean,
-}
+};
 
 const UikDivider = ({
   className,
@@ -26,13 +25,13 @@ const UikDivider = ({
     }, className) }
     { ...rest }
   />
-)
+);
 
 UikDivider.defaultProps = {
   className: null,
   direction: 'horizontal',
   margin: false,
   vertical: false,
-}
+};
 
-export default UikDivider
+export default UikDivider;

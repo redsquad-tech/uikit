@@ -1,14 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
-// @flow
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './widget-title.module.scss'
+import cls from './widget-title.module.scss';
 
 interface UikWidgetHeaderProps {
-  children: React.ReactNode,
-  className?: string,
-  noDivider?: boolean,
-  rightEl?: React.ReactNode,
+  children: React.ReactNode;
+  className?: string;
+  noDivider?: boolean;
+  rightEl?: React.ReactNode;
 }
 
 const UikWidgetHeader = ({
@@ -29,6 +28,6 @@ const UikWidgetHeader = ({
     </h3>
     {rightEl}
   </div>
-)
+);
 
-export default UikWidgetHeader
+export default UikWidgetHeader;

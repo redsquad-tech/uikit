@@ -1,24 +1,24 @@
-import * as React from 'react'
-import classnames from 'classnames'
-import UikOutsideClickHandler from '../UikOutsideClickHandler'
+import React from 'react';
+import classnames from 'classnames';
+import UikOutsideClickHandler from '../UikOutsideClickHandler';
 
-import cls from './menuDrop.module.scss'
-import DefaultDisplayComponent from './DefaultDisplayComponent'
+import cls from './menuDrop.module.scss';
+import DefaultDisplayComponent from './DefaultDisplayComponent';
 
 interface DisplayComponentProps {
-  onClick?: () => void
+  onClick?: () => void;
 }
 
 interface UikDropdownProps {
-  className?: string,
-  children: React.ReactNode,
-  position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight',
-  listProps?: any,
-  displayComponentProps: DisplayComponentProps,
+  className?: string;
+  children: React.ReactNode;
+  position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+  listProps?: any;
+  displayComponentProps: DisplayComponentProps;
 }
 
 interface State {
-  focused: boolean,
+  focused: boolean;
 }
 
 export default class UikDropdown extends React.PureComponent<UikDropdownProps, State> {
@@ -26,19 +26,19 @@ export default class UikDropdown extends React.PureComponent<UikDropdownProps, S
     position: 'bottomLeft',
     displayComponentProps: { onClick: undefined },
     listProps: {},
-  }
+  };
 
   state: State = {
     focused: false,
-  }
+  };
 
   handleToggleFocus = () => {
-    const { focused } = this.state
+    const { focused } = this.state;
 
-    this.props.displayComponentProps.onClick && this.props.displayComponentProps.onClick()
+    this.props.displayComponentProps.onClick && this.props.displayComponentProps.onClick();
 
-    this.setState({ focused: !focused })
-  };
+    this.setState({ focused: !focused });
+  }
 
   render() {
     const {
@@ -51,9 +51,9 @@ export default class UikDropdown extends React.PureComponent<UikDropdownProps, S
       },
       listProps: { listClassName, ...otherListProps },
       ...rest
-    } = this.props
+    } = this.props;
 
-    const { focused } = this.state
+    const { focused } = this.state;
 
     return (
       <UikOutsideClickHandler
@@ -81,6 +81,6 @@ export default class UikDropdown extends React.PureComponent<UikDropdownProps, S
         }
 
       </UikOutsideClickHandler>
-    )
+    );
   }
 }

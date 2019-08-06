@@ -1,15 +1,13 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import s from './widget-content.module.scss'
+import s from './widget-content.module.scss';
 
-// @flow
 type UikWidgetContentProps = {
   children?: React.ReactNode,
   className?: string,
-  grey?: boolean
-}
-
+  grey?: boolean,
+};
 
 const UikWidgetContent = ({
   children,
@@ -25,6 +23,6 @@ const UikWidgetContent = ({
   >
     {children}
   </div>
-)
+);
 
-export default UikWidgetContent
+export default UikWidgetContent;

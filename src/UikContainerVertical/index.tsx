@@ -1,13 +1,12 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './container-v.module.scss'
+import cls from './container-v.module.scss';
 
-// @flow
 type UikContainerVerticalProps = {
   className?: string,
   children?: React.ReactNode,
-}
+};
 
 const UikContainerVertical = ({
   className,
@@ -20,11 +19,11 @@ const UikContainerVertical = ({
   >
     {children}
   </div>
-)
+);
 
 UikContainerVertical.defaultProps = {
   className: null,
   children: null,
-}
+};
 
-export default UikContainerVertical
+export default UikContainerVertical;

@@ -1,17 +1,16 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-icon.module.scss'
+import cls from './nav-icon.module.scss';
 
-import LineLong from './assets/LineLong'
-import LineShort from './assets/LineShort'
+import LineLong from './assets/LineLong';
+import LineShort from './assets/LineShort';
 
-// @flow
 type UikNavBurgerType = {
   className?: String,
   isOpen?: Boolean,
   [key: string]: any,
-}
+};
 
 const UikNavBurger = ({
   className,
@@ -28,11 +27,11 @@ const UikNavBurger = ({
     <LineLong className={ cls.b } />
     <LineShort className={ cls.c } />
   </div>
-)
+);
 
 UikNavBurger.defaultProps = {
   className: null,
   isOpen: false,
-}
+};
 
-export default UikNavBurger
+export default UikNavBurger;

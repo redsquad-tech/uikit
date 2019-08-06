@@ -1,9 +1,9 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import cls from './nav-link.module.scss'
+import cls from './nav-link.module.scss';
 
-import UikNavLink, { UikNavLinkProps } from '../UikNavLink'
+import UikNavLink, { UikNavLinkProps } from '../UikNavLink';
 
 const UikNavLinkDark = ({
   children,
@@ -16,10 +16,10 @@ const UikNavLinkDark = ({
   >
     {children}
   </UikNavLink>
-)
+);
 
 UikNavLinkDark.defaultProps = {
-  Component: 'a'
-}
+  Component: 'a',
+};
 
-export default UikNavLinkDark
+export default UikNavLinkDark;

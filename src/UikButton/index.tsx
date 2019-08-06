@@ -1,42 +1,41 @@
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import s from './btn.module.scss'
+import s from './btn.module.scss';
 
-import UikLoaderDots from '../UikLoaderDots'
+import UikLoaderDots from '../UikLoaderDots';
 
-// @flow
 interface UikButtonProps {
-  children?: React.ReactNode,
-  className?: string,
-  contentClassName?: string,
-  href?: string,
+  children?: React.ReactNode;
+  className?: string;
+  contentClassName?: string;
+  href?: string;
 
   // appearence
 
-  xs?: boolean,
-  lg?: boolean,
+  xs?: boolean;
+  lg?: boolean;
 
-  primary?: boolean,
-  error?: boolean,
-  success?: boolean,
-  transparent?: boolean,
+  primary?: boolean;
+  error?: boolean;
+  success?: boolean;
+  transparent?: boolean;
 
-  clear?: boolean,
-  isLoading?: boolean,
+  clear?: boolean;
+  isLoading?: boolean;
   // icon properties
-  icon?: React.ReactNode,
-  iconRight?: boolean,
-  iconOnly?: boolean,
-  noBorder?: boolean,
-  dark?: boolean,
-  isExpanded?: boolean,
+  icon?: React.ReactNode;
+  iconRight?: boolean;
+  iconOnly?: boolean;
+  noBorder?: boolean;
+  dark?: boolean;
+  isExpanded?: boolean;
 
-  disabled?: boolean,
+  disabled?: boolean;
 
-  to?: string,
+  to?: string;
 
-  onClick?: React.MouseEventHandler<HTMLElement>
+  onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
 export default (props: UikButtonProps) => {
@@ -60,7 +59,7 @@ export default (props: UikButtonProps) => {
     isExpanded,
     onClick,
     ...rest
-  } = props
+  } = props;
 
   const classes = classnames(
     s.base,
@@ -81,17 +80,17 @@ export default (props: UikButtonProps) => {
       [s.isExpanded]: isExpanded,
     },
     className,
-  )
+  );
 
   // put props together so we don't have to repeat it
   const btnProps = {
     className: classes,
     ...rest,
-  }
+  };
 
   return (
     <button
-      onClick={(e) => onClick && onClick(e)}
+      onClick={e => onClick && onClick(e)}
       {...btnProps}
     >
       {
@@ -109,6 +108,5 @@ export default (props: UikButtonProps) => {
       </span>
 
     </button>
-  )
-}
-
+  );
+};

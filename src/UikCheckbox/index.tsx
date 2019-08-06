@@ -1,20 +1,20 @@
-import * as React from 'react'
+import React from 'react';
 
-import UikContentTitle from '../UikContentTitle'
+import UikContentTitle from '../UikContentTitle';
 
-import s from './checkbox.module.scss'
+import s from './checkbox.module.scss';
 import cn from 'classnames';
 
 interface State {
-  value: boolean,
+  value: boolean;
 }
 
 interface UikCheckboxProps {
-  label: React.ReactNode,
-  name?: string,
-  className?: string,
-  value?: boolean,
-  onInput: (value: boolean) => void,
+  label: React.ReactNode;
+  name?: string;
+  className?: string;
+  value?: boolean;
+  onInput: (value: boolean) => void;
 }
 
 class UikCheckbox extends React.PureComponent<UikCheckboxProps, State> {
@@ -25,23 +25,22 @@ class UikCheckbox extends React.PureComponent<UikCheckboxProps, State> {
   }
 
   componentWillReceiveProps(nextProps: UikCheckboxProps) {
-    nextProps.value && this.setState({ value: nextProps.value })
+    nextProps.value && this.setState({ value: nextProps.value });
   }
 
   changeHandler = (e: React.SyntheticEvent) => {
     const { onInput } = this.props;
-    this.setState({ value: !this.state.value});
+    this.setState({ value: !this.state.value });
     onInput(!this.state.value);
     e.preventDefault();
   }
-
 
   render() {
     const {
       className,
       name,
       label,
-    } = this.props
+    } = this.props;
 
     return (
       <div
@@ -50,7 +49,7 @@ class UikCheckbox extends React.PureComponent<UikCheckboxProps, State> {
       >
         <input
           name={ name }
-          type='checkbox'
+          type="checkbox"
           checked={this.state.value}
           onChange={this.changeHandler}
         />
@@ -62,8 +61,8 @@ class UikCheckbox extends React.PureComponent<UikCheckboxProps, State> {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default UikCheckbox
+export default UikCheckbox;

@@ -1,11 +1,9 @@
-import * as React from 'react'
-import s from './avatar.module.scss'
-
-// @flow
+import React from 'react';
+import s from './avatar.module.scss';
 
 type UikAvatarStatusProps = {
   status: React.ReactNode,
-}
+};
 
 const UikAvatarStatus = ({ status }: UikAvatarStatusProps) => (
   <div className={s.statusWrapper}>
@@ -19,6 +17,6 @@ const UikAvatarStatus = ({ status }: UikAvatarStatusProps) => (
       )
     }
   </div>
-)
+);
 
-export default UikAvatarStatus
+export default UikAvatarStatus;

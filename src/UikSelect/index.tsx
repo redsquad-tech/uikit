@@ -1,45 +1,43 @@
 
-import * as React from 'react'
-import classnames from 'classnames'
+import React from 'react';
+import classnames from 'classnames';
 
-import OptionList from './OptionList'
-import UikButton from '../UikButton'
-import UikOutsideClickHandler from '../UikOutsideClickHandler'
-import UikContentTitle from '../UikContentTitle'
+import OptionList from './OptionList';
+import UikButton from '../UikButton';
+import UikOutsideClickHandler from '../UikOutsideClickHandler';
+import UikContentTitle from '../UikContentTitle';
 
 // cls
-import cls from './select.module.scss'
+import cls from './select.module.scss';
 
-
-// @flow
-import { UikSelectOptionValueType, UikSelectOptionType } from './flowTypes'
+import { UikSelectOptionValueType, UikSelectOptionType } from './flowTypes';
 
 interface UikSelectProps {
-  className?: string,
-  placeholder?: React.ReactNode,
-  name?: string,
-  options: Array<UikSelectOptionType>,
+  className?: string;
+  placeholder?: React.ReactNode;
+  name?: string;
+  options: Array<UikSelectOptionType>;
 
-  defaultValue?: Array<UikSelectOptionValueType> | UikSelectOptionValueType,
-  value?: Array<UikSelectOptionType>,
-  excluded?: Array<UikSelectOptionValueType>,
+  defaultValue?: Array<UikSelectOptionValueType> | UikSelectOptionValueType;
+  value?: Array<UikSelectOptionType>;
+  excluded?: Array<UikSelectOptionValueType>;
 
   /* Allows multiple selection */
-  multi?: boolean,
+  multi?: boolean;
   /* disables selection */
-  disabled?: boolean,
+  disabled?: boolean;
 
-  position?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight',
+  position?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
   /* on change */
-  onChange?: (selected: UikSelectOptionType[]) => void,
-  activeValueProps: React.HTMLAttributes<HTMLDivElement>,
-  optionProps: React.HTMLAttributes<HTMLDivElement>,
-  label?: string
+  onChange?: (selected: UikSelectOptionType[]) => void;
+  activeValueProps: React.HTMLAttributes<HTMLDivElement>;
+  optionProps: React.HTMLAttributes<HTMLDivElement>;
+  label?: string;
 }
 
 interface State {
-    selected: UikSelectOptionType[],
-    focused: boolean,
+  selected: UikSelectOptionType[];
+  focused: boolean;
 }
 
 class Select extends React.Component<UikSelectProps, State> {
@@ -61,102 +59,102 @@ class Select extends React.Component<UikSelectProps, State> {
   };
 
   constructor(props: UikSelectProps) {
-    super(props)
+    super(props);
     const defaultValue = Array.isArray(props.defaultValue)
       ? props.defaultValue
       : [
         props.defaultValue,
-      ]
-    const selected: UikSelectOptionType[] = []
+      ];
+    const selected: UikSelectOptionType[] = [];
 
     props.options.forEach((item) => {
       if (defaultValue.indexOf(item.value) !== -1) {
-        selected.push(item)
+        selected.push(item);
       }
-    })
+    });
 
     this.state = {
       selected,
       focused: false,
-    }
+    };
   }
 
-  callCallbackIfAvailable = false
+  callCallbackIfAvailable = false;
 
   componentDidUpdate() {
-    const { onChange, multi } = this.props
-    if (this.callCallbackIfAvailable == true && onChange) {
-      this.callCallbackIfAvailable = false
+    const { onChange, multi } = this.props;
+    if (this.callCallbackIfAvailable && onChange) {
+      this.callCallbackIfAvailable = false;
       // check if i should call onChange
-      const { selected } = this.state
+      const { selected } = this.state;
       if (multi) {
-        onChange(selected)
+        onChange(selected);
       } else {
-        onChange([selected[0]])
+        onChange([selected[0]]);
       }
     }
   }
 
   onAllClick = (clearOnly = false) => {
-    const { selected } = this.state
-    const { options } = this.props
+    const { selected } = this.state;
+    const { options } = this.props;
     if (selected.length >= options.length || clearOnly) {
-      this.callCallbackIfAvailable = true
+      this.callCallbackIfAvailable = true;
       this.setState({
         selected: [
         ],
-      })
+      });
     } else {
-      this.onChange(options)
-      this.setState({ selected: options.map(i => i) }) // depp copy
+      this.onChange(options);
+      this.setState({ selected: options.map(i => i) }); // depp copy
     }
-  };
+  }
 
   onChange = (options: UikSelectOptionType[]) => {
-    this.callCallbackIfAvailable = true
-  };
+    this.callCallbackIfAvailable = true;
+  }
 
   onToggleFocus: () => void = () => {
-    const { focused } = this.state
-    this.setState({ focused: !focused })
-  };
+    const { focused } = this.state;
+    this.setState({ focused: !focused });
+  }
 
   onClickUnfocus = () => {
-    this.setState({ focused: false })
-  };
+    this.setState({ focused: false });
+  }
 
   getValue = () => {
-    const { disabled, value } = this.props
-    const { selected: stateSelected } = this.state
-    const selected = value || stateSelected
+    const { disabled, value } = this.props;
+    const { selected: stateSelected } = this.state;
+    const selected = value || stateSelected;
     if (disabled) {
-      return []
+      return [];
     }
 
-    return selected
-  };
+    return selected;
+  }
 
   setValue = (value: UikSelectOptionValueType) => {
-    const selected: UikSelectOptionType[] = []
-    const { options } = this.props
-    const values = [value]
+    const selected: UikSelectOptionType[] = [];
+    const { options } = this.props;
+    const values = [value];
 
     if (values.length > 0) {
       options.forEach((item) => {
         if (values.indexOf(item.value) !== -1) {
-          selected.push(item)
+          selected.push(item);
         }
-      })
+      });
     }
 
-    this.onChange(selected)
-    this.setState({ selected })
-  };
+    this.onChange(selected);
+    this.setState({ selected });
+  }
 
   optionClick = (option: UikSelectOptionType) => {
     const {
       multi,
-    } = this.props
+    } = this.props;
     // single item
     if (!multi) {
       this.setState({
@@ -164,24 +162,24 @@ class Select extends React.Component<UikSelectProps, State> {
           option,
         ],
         focused: false,
-      })
+      });
       this.onChange([
         option,
-      ])
-      return
+      ]);
+      return;
     }
 
     // multiple allowed
-    const { selected } = this.state
-    const index = selected.map(item => item.value).indexOf(option.value)
+    const { selected } = this.state;
+    const index = selected.map(item => item.value).indexOf(option.value);
     if (index !== -1) {
-      selected.splice(index, 1)
+      selected.splice(index, 1);
     } else {
-      selected.push(option)
+      selected.push(option);
     }
-    this.onChange(selected)
-    this.setState({ selected })
-  };
+    this.onChange(selected);
+    this.setState({ selected });
+  }
 
   renderHiddenInputs() {
     const {
@@ -189,18 +187,18 @@ class Select extends React.Component<UikSelectProps, State> {
       multi,
       disabled,
       value,
-    } = this.props
+    } = this.props;
 
     // do not render hidden inputs if no name
     if (!name) {
-      return null
+      return null;
     }
-    const { selected: stateSelected } = this.state
-    const selected = value || stateSelected
+    const { selected: stateSelected } = this.state;
+    const selected = value || stateSelected;
     if (disabled) {
-      return null
+      return null;
     }
-    const inputName = multi ? `${name}[]` : name
+    const inputName = multi ? `${name}[]` : name;
 
     // render selected
     return selected && selected.length > 0 ? (
@@ -218,7 +216,7 @@ class Select extends React.Component<UikSelectProps, State> {
         name={ name }
         type="hidden"
       />
-    )
+    );
   }
 
   renderValue() {
@@ -226,14 +224,14 @@ class Select extends React.Component<UikSelectProps, State> {
       disabled,
       options,
       placeholder,
-    } = this.props
-    const selected = this.props.value || this.state.selected // eslint-disable-line
-    const firstRender = selected[0]
+    } = this.props;
+    const selected = this.props.value || this.state.selected; // eslint-disable-line
+    const firstRender = selected[0];
     if (typeof firstRender !== 'undefined') {
       if (!firstRender.label) {
-        const full = options.find(item => firstRender.value === item.value)
+        const full = options.find(item => firstRender.value === item.value);
         if (full) {
-          firstRender.label = full.label
+          firstRender.label = full.label;
         }
       }
     }
@@ -243,21 +241,21 @@ class Select extends React.Component<UikSelectProps, State> {
         <span className={ cls.valueWrapper }>
           No options available
         </span>
-      )
+      );
     }
     if (disabled || selected.length < 1) {
       return (
         <span className={ classnames(cls.valueWrapper, cls.placeholderEmpty) }>
           {placeholder}
         </span>
-      )
+      );
     }
     if (selected.length === 1) {
       return (
         <div className={ cls.valueWrapper }>
           {firstRender.label}
         </div>
-      )
+      );
     }
     return (
       <div className={ cls.placeholderAndOther }>
@@ -269,7 +267,7 @@ class Select extends React.Component<UikSelectProps, State> {
           {selected.length - 1}
         </div>
       </div>
-    )
+    );
   }
 
   render() {
@@ -283,14 +281,14 @@ class Select extends React.Component<UikSelectProps, State> {
       activeValueProps,
       optionProps,
       label,
-    } = this.props
+    } = this.props;
 
-    const { selected, focused } = this.state
+    const { selected, focused } = this.state;
 
     const {
       className: activeValueClassName,
       ...activeValuePropsRest
-    } = activeValueProps
+    } = activeValueProps;
 
     return (
       <UikOutsideClickHandler
@@ -304,7 +302,7 @@ class Select extends React.Component<UikSelectProps, State> {
         <UikButton
           className={ classnames(cls.valueRendered, activeValueClassName) }
           disabled={ disabled || options.length < 1 }
-          onClick={ (e) => this.onToggleFocus() }
+          onClick={ () => this.onToggleFocus() }
           { ...activeValuePropsRest }
         >
           <div className={ cls.valueRenderedWrapper }>
@@ -325,8 +323,8 @@ class Select extends React.Component<UikSelectProps, State> {
         )}
         {this.renderHiddenInputs()}
       </UikOutsideClickHandler>
-    )
+    );
   }
 }
 
-export default Select
+export default Select;
