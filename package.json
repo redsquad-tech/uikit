@@ -1,10 +1,10 @@
 {
   "name": "uikit",
   "version": "1.1.0",
-  "description": "Uikit test",
+  "description": "Uikit lib",
   "author": "Blakhard",
   "license": "MIT",
-  "repository": "Blakhard/test",
+  "repository": "fastlawIo/uikit",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "jsnext:main": "dist/index.es.js",
