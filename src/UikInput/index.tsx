@@ -10,14 +10,9 @@ interface State {
   errorMessage?: string;
 }
 
-export class DataCheck {
-  private pattern: RegExp;
-  test(v: string): boolean {
-    return this.pattern.test(v);
-  }
-  constructor(pattern: RegExp) {
-    this.pattern = pattern;
-  }
+interface DataCheck {
+  pattern: RegExp;
+  test: (v: string) => boolean;
 }
 
 export interface Check {
