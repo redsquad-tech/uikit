@@ -10,7 +10,7 @@ import UikContentTitle from '../UikContentTitle';
 // cls
 import cls from './select.module.scss';
 
-import { UikSelectOptionValueType, UikSelectOptionType } from './flowTypes';
+import { UikSelectOptionValueType, UikSelectOptionType } from './interface';
 
 interface UikSelectProps {
   className?: string;
