@@ -10,8 +10,18 @@ interface State {
   errorMessage?: string;
 }
 
+export class DataCheck {
+  private pattern: RegExp;
+  test(v: string): boolean {
+    return this.pattern.test(v);
+  }
+  constructor(pattern: RegExp) {
+    this.pattern = pattern;
+  }
+}
+
 export interface Check {
-  pattern: RegExp;
+  pattern: RegExp | DataCheck;
   noMatchMessage: string;
 }
 
@@ -65,7 +75,7 @@ class Input extends Component<UikInputProps, State> {
     return (
       <div
         { ...wrapperProps }
-        className={ classnames(className, {
+        className={ classnames(wrapperProps ? wrapperProps.className : undefined, {
           [s.clear]: clear,
         }) }
       >
@@ -97,7 +107,7 @@ class Input extends Component<UikInputProps, State> {
             )
           }
           <input
-            className={ classnames(s.input, {
+            className={ classnames(className, s.input, {
               [s.errorHighlight]: this.state.errorMessage,
             }) }
             name={ name }
@@ -106,8 +116,8 @@ class Input extends Component<UikInputProps, State> {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               const value = e.target.value;
 
-              if ((this.props.valueCheck && value && this.props.valueCheck.pattern.test(value)) ||
-                    !this.props.valueCheck || value.length === 0) {
+              if ((this.props.valueCheck && value && this.props.valueCheck.pattern.test(value))
+               || !this.props.valueCheck || value.length === 0) {
                 this.setState({ value, errorMessage: this.props.errorMessage });
                 this.props.onInput && this.props.onInput(value);
               } else {
