@@ -7,16 +7,17 @@ import cls from './menuDrop.module.scss';
 
 interface DefaultDisplayComponentProps {
   className?: string;
+  title?: string;
   onClick: () => void;
 }
 
-const DefaultDisplayComponent = ({ className, ...rest }: DefaultDisplayComponentProps) => (
+const DefaultDisplayComponent = ({ className, title, ...rest }: DefaultDisplayComponentProps) => (
   <UikButton
     className={ classnames(cls.defaultDisplayComponent, className) }
     contentClassName={ cls.btnContent }
     { ...rest }
   >
-    &middot;&middot;&middot;
+    {title ? title : <span>&middot;&middot;&middot;</span>}
   </UikButton>
 );
 

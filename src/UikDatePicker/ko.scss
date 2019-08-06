@@ -1,0 +1,36 @@
+@import "../../../../node_modules/react-day-picker/lib/style";
+@import "../vars.scss";
+
+.DayPickerInput {
+  position: relative;
+}
+
+.DayPickerInput > input {
+  border: $borderDefault;
+  border-radius: 4px;
+  display: block;
+  width: 100%;
+  background: white;
+  padding: 10px 15px;
+  transition: .2s all;
+  outline: none;
+  &+* {
+    margin-top: 10px;
+  }
+  &:disabled {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  &:focus {
+    border-color: $primary;
+  }
+  &::-webkit-input-placeholder,
+  &::-moz-placeholder,
+  &:-ms-input-placeholder,
+  &:-moz-placeholder {
+    color: $textSecondary;
+  }
+  font-size: 0.875rem;
+  &.errorHighlight {
+    border-color: $red;
+  }
+}
