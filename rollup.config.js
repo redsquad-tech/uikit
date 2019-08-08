@@ -30,7 +30,8 @@ export default {
     url(),
     svgr(),    
     postcss({
-      modules: true
+      modules: true,
+      sourceMap: true
     }),
     resolve(),
     typescript({
