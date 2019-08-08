@@ -36,7 +36,6 @@ interface UikInputProps {
   valueCheck?: Check;
   onInput?: (value: string) => void;
   disabled?: boolean;
-  ref?: React.RefObject<HTMLInputElement>
 }
 
 class Input extends Component<UikInputProps, State> {
@@ -64,7 +63,6 @@ class Input extends Component<UikInputProps, State> {
       value,
       valueCheck,
       onInput,
-      ref,
       // size
       ...rest
     } = this.props;
@@ -123,7 +121,6 @@ class Input extends Component<UikInputProps, State> {
               }
               e.preventDefault();
             }}
-            ref={ref ? ref : undefined}
             {...rest}
           />
         </div>
