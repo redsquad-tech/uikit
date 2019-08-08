@@ -26,7 +26,7 @@ interface UikSelectProps {
 
   position?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
   /* on change */
-  onChange?: (selected: UikSelectOptionType[]) => void;
+  onChange?: (selected: UikSelectOptionType) => void;
   activeValueProps: React.HTMLAttributes<HTMLDivElement>;
   optionProps: React.HTMLAttributes<HTMLDivElement>;
   label?: string;
@@ -70,6 +70,14 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
       focused: false,
       currentSearch: '',
     };
+  }
+  componentDidUpdate() {
+    const { onChange } = this.props;
+    const { selected } = this.state;
+    if (this.callCallbackIfAvailable && onChange && selected) {
+      this.callCallbackIfAvailable = false;
+      onChange(selected);
+    }
   }
 
   callCallbackIfAvailable = false;
@@ -188,7 +196,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
         }
         <div className={cls.input}>
           <div className={ cls.valueRenderedWrapper }
-           onClick={() => { console.log(this.ref.current); this.ref.current.focusInput();}}
+           onClick={() => this.ref.current.focusInput()}
           >
             {this.renderValue()}
           </div>
