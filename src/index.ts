@@ -1,3 +1,4 @@
+import 'index.css';
 export { default as UikWidgetContent } from './UikWidgetContent';
 export { default as UikWidgetHeader } from './UikWidgetHeader';
 export { default as UikWidget } from './UikWidget';
