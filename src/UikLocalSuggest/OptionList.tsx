@@ -3,7 +3,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 
 import UikButton from '../UikButton';
-import cls from './select.module.scss';
+import cls from './suggest.module.scss';
 
 import { UikSelectOptionType } from './interface';
 
