@@ -39,6 +39,11 @@ interface UikInputProps {
 }
 
 class Input extends Component<UikInputProps, State> {
+  ref: React.RefObject<HTMLInputElement> = React.createRef();
+
+  focusInput = () => {
+    this.ref.current!.focus();
+  }
 
   constructor(props: UikInputProps) {
     super(props);
@@ -102,6 +107,7 @@ class Input extends Component<UikInputProps, State> {
             )
           }
           <input
+            ref={this.ref}
             className={ classnames(className, s.input, {
               [s.errorHighlight]: this.state.errorMessage,
             }) }

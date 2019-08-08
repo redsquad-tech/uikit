@@ -188,7 +188,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
         }
         <div className={cls.input}>
           <div className={ cls.valueRenderedWrapper }
-           onClick={() => { console.log(this.ref.current); this.ref.current.focus();}}
+           onClick={() => { console.log(this.ref.current); this.ref.current.focusInput();}}
           >
             {this.renderValue()}
           </div>
