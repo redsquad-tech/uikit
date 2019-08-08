@@ -185,7 +185,7 @@ class Select extends React.Component<UikSelectProps, State> {
         {
           label ? <UikContentTitle>{label}</UikContentTitle> : null
         }
-        <div className="input">
+        <div className={cls.input}>
           <div className={ cls.valueRenderedWrapper }>
             {this.renderValue()}
           </div>
