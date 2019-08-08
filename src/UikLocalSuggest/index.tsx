@@ -125,6 +125,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
     this.setState({
       selected: option,
       focused: false,
+      currentSearch: '',
     });
     this.onChange(option);
   }
@@ -163,7 +164,6 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
 
   search = (e: string) => {
     this.setState({ focused: true, currentSearch: e });
-    console.log(e);
   }
 
   filterOptions = (checker: string) => {
@@ -200,7 +200,11 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
           >
             {this.renderValue()}
           </div>
-          <UikInput onInput={this.search} disabled={ disabled || options.length < 1 } ref={this.ref}/>
+          <UikInput
+           onInput={this.search}
+           disabled={ disabled || options.length < 1 } ref={this.ref}
+           value={this.state.currentSearch}
+          />
         </div>
         {focused && !disabled && (
           <OptionList
