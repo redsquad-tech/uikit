@@ -7,6 +7,7 @@ import DefaultDisplayComponent from './DefaultDisplayComponent';
 
 interface DisplayComponentProps {
   onClick?: () => void;
+  [key: string]: any;
 }
 
 interface UikDropdownProps {

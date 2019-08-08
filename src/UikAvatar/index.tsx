@@ -6,9 +6,9 @@ import UikAvatarImage from './UikAvatarImage';
 
 import style from './avatar.module.scss';
 
-type UikAvatarPlaceholderProps = {
-  content?: React.ReactNode,
-  color?: 'green' | 'blue' | 'orange' | 'violet' | 'red',
+interface UikAvatarPlaceholderProps {
+  content?: React.ReactNode;
+  color?: 'green' | 'blue' | 'orange' | 'violet' | 'red';
 };
 
 export type UikAvatarProps = {
