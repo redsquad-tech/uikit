@@ -38,7 +38,7 @@ interface State {
   currentSearch: string;
 }
 
-class Select extends React.Component<UikSelectProps, State> {
+class LocalSuggest extends React.Component<UikSelectProps, State> {
   ref: RefObject<any> = createRef();
   static defaultProps = {
     onChange: (selected: UikSelectOptionType) => {},
@@ -187,7 +187,9 @@ class Select extends React.Component<UikSelectProps, State> {
           label ? <UikContentTitle>{label}</UikContentTitle> : null
         }
         <div className={cls.input}>
-          <div className={ cls.valueRenderedWrapper } onClick={() => this.ref.current.focus()}>
+          <div className={ cls.valueRenderedWrapper }
+           onClick={() => { console.log(this.ref.current); this.ref.current.focus();}}
+          >
             {this.renderValue()}
           </div>
           <UikInput onInput={this.search} disabled={ disabled || options.length < 1 } ref={this.ref}/>
@@ -206,4 +208,4 @@ class Select extends React.Component<UikSelectProps, State> {
   }
 }
 
-export default Select;
+export default LocalSuggest;
