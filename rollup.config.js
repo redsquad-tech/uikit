@@ -31,13 +31,13 @@ export default {
     svgr(),    
     postcss({
       modules: true,
+      extract: true,
     }),
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true
     }),
-
     commonjs()
   ]
 }
