@@ -8,10 +8,9 @@ import cls from './select.module.scss';
 import { UikSelectOptionType } from './interface';
 
 interface OptionListProps {
-  selected: UikSelectOptionType[];
+  selected: UikSelectOptionType | null;
   options: UikSelectOptionType[];
   optionClick: (key: UikSelectOptionType) => void;
-  onAllClick: () => void;
   position: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
   optionProps: React.HTMLAttributes<HTMLDivElement>;
 }
@@ -38,7 +37,7 @@ class OptionList extends React.Component<OptionListProps> {
     } = this.props;
 
     return options.map((i) => {
-      const indexIsSelected = selected.find(k => i.value === k.value);
+      const indexIsSelected = selected && selected.value === i.value;
       const onClick = (key: UikSelectOptionType) => () => {
         optionClick(key);
       };

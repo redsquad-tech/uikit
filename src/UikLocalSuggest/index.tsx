@@ -8,7 +8,7 @@ import UikContentTitle from '../UikContentTitle';
 import UikInput from '../UikInput';
 
 // cls
-import cls from './select.module.scss';
+import cls from './suggest.module.scss';
 
 import { UikSelectOptionValueType, UikSelectOptionType } from './interface';
 
@@ -18,11 +18,9 @@ interface UikSelectProps {
   name?: string;
   options: Array<UikSelectOptionType>;
 
-  defaultValue?: Array<UikSelectOptionValueType> | UikSelectOptionValueType;
-  value?: Array<UikSelectOptionType>;
+  defaultValue?: UikSelectOptionValueType;
+  value?: UikSelectOptionType;
 
-  /* Allows multiple selection */
-  multi?: boolean;
   /* disables selection */
   disabled?: boolean;
 
@@ -35,19 +33,17 @@ interface UikSelectProps {
 }
 
 interface State {
-  selected: UikSelectOptionType[];
+  selected: UikSelectOptionType | null;
   focused: boolean;
   currentSearch: string;
 }
 
 class Select extends React.Component<UikSelectProps, State> {
   static defaultProps = {
-    onChange: (selected: UikSelectOptionType[]) => {}, // eslint-disable-line
-    multi: false,
+    onChange: (selected: UikSelectOptionType) => {},
     className: '',
     disabled: false,
     defaultValue: [],
-    multiLimit: 0,
     value: null,
     placeholder: null,
     name: null,
@@ -59,16 +55,12 @@ class Select extends React.Component<UikSelectProps, State> {
 
   constructor(props: UikSelectProps) {
     super(props);
-    const defaultValue = Array.isArray(props.defaultValue)
-      ? props.defaultValue
-      : [
-        props.defaultValue,
-      ];
-    const selected: UikSelectOptionType[] = [];
+    const defaultValue = props.defaultValue;
+    let selected = null;
 
     props.options.forEach((item) => {
-      if (defaultValue.indexOf(item.value) !== -1) {
-        selected.push(item);
+      if (defaultValue === item.value) {
+        selected = item;
       }
     });
 
@@ -81,36 +73,7 @@ class Select extends React.Component<UikSelectProps, State> {
 
   callCallbackIfAvailable = false;
 
-  componentDidUpdate() {
-    const { onChange, multi } = this.props;
-    if (this.callCallbackIfAvailable && onChange) {
-      this.callCallbackIfAvailable = false;
-      // check if i should call onChange
-      const { selected } = this.state;
-      if (multi) {
-        onChange(selected);
-      } else {
-        onChange([selected[0]]);
-      }
-    }
-  }
-
-  onAllClick = (clearOnly = false) => {
-    const { selected } = this.state;
-    const { options } = this.props;
-    if (selected.length >= options.length || clearOnly) {
-      this.callCallbackIfAvailable = true;
-      this.setState({
-        selected: [
-        ],
-      });
-    } else {
-      this.onChange(options);
-      this.setState({ selected: options.map(i => i) }); // depp copy
-    }
-  }
-
-  onChange = (options: UikSelectOptionType[]) => {
+  onChange = (option: UikSelectOptionType | null) => {
     this.callCallbackIfAvailable = true;
   }
 
@@ -135,14 +98,12 @@ class Select extends React.Component<UikSelectProps, State> {
   }
 
   setValue = (value: UikSelectOptionValueType) => {
-    const selected: UikSelectOptionType[] = [];
     const { options } = this.props;
-    const values = [value];
-
-    if (values.length > 0) {
+    let selected = null;
+    if (value) {
       options.forEach((item) => {
-        if (values.indexOf(item.value) !== -1) {
-          selected.push(item);
+        if (value === item.value) {
+          selected = item;
         }
       });
     }
@@ -152,69 +113,11 @@ class Select extends React.Component<UikSelectProps, State> {
   }
 
   optionClick = (option: UikSelectOptionType) => {
-    const { multi } = this.props;
-    // single item
-    if (!multi) {
-      this.setState({
-        selected: [
-          option,
-        ],
-        focused: false,
-      });
-      this.onChange([
-        option,
-      ]);
-      return;
-    }
-
-    // multiple allowed
-    const { selected } = this.state;
-    const index = selected.map(item => item.value).indexOf(option.value);
-    if (index !== -1) {
-      selected.splice(index, 1);
-    } else {
-      selected.push(option);
-    }
-    this.onChange(selected);
-    this.setState({ selected });
-  }
-
-  renderHiddenInputs() {
-    const {
-      name,
-      multi,
-      disabled,
-      value,
-    } = this.props;
-
-    // do not render hidden inputs if no name
-    if (!name) {
-      return null;
-    }
-    const { selected: stateSelected } = this.state;
-    const selected = value || stateSelected;
-    if (disabled) {
-      return null;
-    }
-    const inputName = multi ? `${name}[]` : name;
-
-    // render selected
-    return selected && selected.length > 0 ? (
-      selected.map(item => (
-        <input
-          key={ item.value.toString() }
-          name={ inputName }
-          type="hidden"
-          value={ item.value.toString() }
-        />
-      ))
-    ) : (
-      // or render one empty
-      <input
-        name={ name }
-        type="hidden"
-      />
-    );
+    this.setState({
+      selected: option,
+      focused: false,
+    });
+    this.onChange(option);
   }
 
   renderValue() {
@@ -223,16 +126,7 @@ class Select extends React.Component<UikSelectProps, State> {
       options,
       placeholder,
     } = this.props;
-    const selected = this.props.value || this.state.selected; // eslint-disable-line
-    const firstRender = selected[0];
-    if (typeof firstRender !== 'undefined') {
-      if (!firstRender.label) {
-        const full = options.find(item => firstRender.value === item.value);
-        if (full) {
-          firstRender.label = full.label;
-        }
-      }
-    }
+    const selected = this.props.value || this.state.selected;
 
     if (options.length < 1) {
       return (
@@ -241,31 +135,21 @@ class Select extends React.Component<UikSelectProps, State> {
         </span>
       );
     }
-    if (disabled || selected.length < 1) {
+    if (disabled) {
       return (
         <span className={ classnames(cls.valueWrapper, cls.placeholderEmpty) }>
           {placeholder}
         </span>
       );
     }
-    if (selected.length === 1) {
+    if (selected && selected.value) {
       return (
         <div className={ cls.valueWrapper }>
-          {firstRender.label}
+          {selected.label}
         </div>
       );
     }
-    return (
-      <div className={ cls.placeholderAndOther }>
-        <div>
-          {firstRender.label}
-        </div>
-        <div className={ cls.plusValue }>
-          +
-          {selected.length - 1}
-        </div>
-      </div>
-    );
+    return null;
   }
 
   search = (e: string) => {
@@ -309,7 +193,6 @@ class Select extends React.Component<UikSelectProps, State> {
         </div>
         {focused && !disabled && (
           <OptionList
-            onAllClick={ this.onAllClick }
             optionClick={ this.optionClick }
             optionProps={ optionProps }
             options={ options.filter(this.filterOptions(currentSearch)) }
@@ -317,7 +200,6 @@ class Select extends React.Component<UikSelectProps, State> {
             selected={ value || selected }
           />
         )}
-        {this.renderHiddenInputs()}
       </UikOutsideClickHandler>
     );
   }
