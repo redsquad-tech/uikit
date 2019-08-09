@@ -8,4 +8,4 @@ yarn add git+ssh://git@github.com:fastlawIo/uikit.git
 
 ## License
 
-Private © [fastlow](https://github.com/fastlow)
+Private © [fastlaw](https://github.com/fastlow)
