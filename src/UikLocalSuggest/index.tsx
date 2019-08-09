@@ -57,7 +57,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
   constructor(props: UikSelectProps) {
     super(props);
     const defaultValue = props.defaultValue;
-    let selected = null;
+    let selected: any = null;
 
     props.options.forEach((item) => {
       if (defaultValue === item.value) {
@@ -68,7 +68,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
     this.state = {
       selected,
       focused: false,
-      currentSearch: '',
+      currentSearch: selected && selected.label ? selected.label : selected.value,
     };
   }
   componentDidUpdate() {
@@ -198,11 +198,6 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
           this.setState({ focused: true, currentSearch: '' });
           this.ref.current.focusInput();
         }}>
-          { false && <div className={ cls.valueRenderedWrapper }
-           onClick={() => this.ref.current.focusInput()}
-          >
-            {this.renderValue()}
-          </div> }
           <UikInput
            onInput={this.search}
            disabled={ disabled || options.length < 1 } ref={this.ref}
