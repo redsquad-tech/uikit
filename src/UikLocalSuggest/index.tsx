@@ -35,7 +35,7 @@ interface UikSelectProps {
 interface State {
   selected: UikSelectOptionType | null;
   focused: boolean;
-  currentSearch: string;
+  currentSearch: string | number;
 }
 
 class LocalSuggest extends React.Component<UikSelectProps, State> {
@@ -125,7 +125,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
     this.setState({
       selected: option,
       focused: false,
-      currentSearch: '',
+      currentSearch: option.label ? option.label as string : option.value,
     });
     this.onChange(option);
   }
@@ -194,23 +194,26 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
         {
           label ? <UikContentTitle>{label}</UikContentTitle> : null
         }
-        <div className={cls.input}>
-          <div className={ cls.valueRenderedWrapper }
+        <div className={cls.input} onClick={() => {
+          this.setState({ focused: true, currentSearch: '' });
+          this.ref.current.focusInput();
+        }}>
+          { false && <div className={ cls.valueRenderedWrapper }
            onClick={() => this.ref.current.focusInput()}
           >
             {this.renderValue()}
-          </div>
+          </div> }
           <UikInput
            onInput={this.search}
            disabled={ disabled || options.length < 1 } ref={this.ref}
-           value={this.state.currentSearch}
+           value={this.state.currentSearch.toString()}
           />
         </div>
         {focused && !disabled && (
           <OptionList
             optionClick={ this.optionClick }
             optionProps={ optionProps }
-            options={ options.filter(this.filterOptions(currentSearch)) }
+            options={ options.filter(this.filterOptions(currentSearch.toString())) }
             position={ position }
             selected={ value || selected }
           />
