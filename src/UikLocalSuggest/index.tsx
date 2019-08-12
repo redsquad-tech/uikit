@@ -169,7 +169,7 @@ class LocalSuggest extends React.Component<UikSelectProps, State> {
   filterOptions = (checker: string) => {
     return (item: UikSelectOptionType) =>
     ((item.label && item.label.toString().toLowerCase().indexOf(checker.toLowerCase()) !== -1) ||
-    item.value.toString().toLowerCase().indexOf(checker.toLowerCase()) !== -1) ;
+    (item.value.toString().toLowerCase().indexOf(checker.toLowerCase()) !== -1));
   }
 
   render() {
