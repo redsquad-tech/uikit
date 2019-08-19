@@ -53,6 +53,17 @@ extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLD
     }
   }
 
+  isDescendant = (parent: HTMLElement, child: any) => {
+    let node = child.parentNode;
+    while (node != null) {
+      if (node === parent) {
+        return true;
+      }
+      node = node.parentNode;
+    }
+    return false;
+  }
+
   handleOutsideClick = (e: Event) => {
     console.log('help');
     const { onOutsideClick } = this.props;
@@ -60,7 +71,7 @@ extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLD
       return;
     }
 
-    const isDescendantOfRoot = !!e.target && this.ref.current;
+    const isDescendantOfRoot = this.isDescendant(this.ref.current!, e.target);
     if (!isDescendantOfRoot) {
       onOutsideClick(e);
     }
