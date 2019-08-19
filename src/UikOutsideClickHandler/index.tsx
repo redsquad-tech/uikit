@@ -65,7 +65,6 @@ extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLD
   }
 
   handleOutsideClick = (e: Event) => {
-    console.log('help');
     const { onOutsideClick } = this.props;
     if (typeof onOutsideClick !== 'function') {
       return;
@@ -79,7 +78,6 @@ extends React.Component<UikOutsideClickHandlerProps & React.HTMLAttributes<HTMLD
 
   bindListeners = () => {
     const { onOutsideScroll, onWindowResize } = this.props;
-    console.log('hello');
     if (typeof document !== 'undefined' && document.addEventListener) {
       // `useCapture` flag is set to true so
       // that a `stopPropagation` in the children will
