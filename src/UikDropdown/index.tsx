@@ -57,6 +57,7 @@ export default class UikDropdown extends React.PureComponent<UikDropdownProps, S
     const { focused } = this.state;
 
     return (
+      <>
       <UikOutsideClickHandler
         className={ className }
         onOutsideClick={(e: Event) => focused ? this.handleToggleFocus() : null }
@@ -68,20 +69,21 @@ export default class UikDropdown extends React.PureComponent<UikDropdownProps, S
           onClick={ this.handleToggleFocus }
           { ...otherDisplayComponentProps }
         />
-        {
-          focused && (
-            <div
-              className={ classnames(cls.list, listClassName, {
-                [cls[position]]: position,
-              }) }
-              { ...otherListProps }
-            >
-              {children}
-            </div>
-          )
-        }
+        
 
       </UikOutsideClickHandler>
+      {
+        focused && (
+          <div
+            className={ classnames(cls.list, listClassName, {
+              [cls[position]]: position,
+            }) }
+            { ...otherListProps }
+          >
+            {children}
+          </div>
+      )}
+      </>
     );
   }
 }
