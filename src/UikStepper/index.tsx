@@ -17,10 +17,29 @@ interface Props {
   childrenClassName?: string;
 }
 
-export default class UikStepper extends Component<Props> {
+interface State {
+  pagesVisited: string[];
+}
+
+export default class UikStepper extends Component<Props, State> {
+
+  constructor(props: Props) {
+    super(props);
+    this.state = { pagesVisited: [props.active] };
+  }
+
+  componentDidUpdate () {
+    const { active } = this.props;
+    const { pagesVisited } = this.state;
+    if (!(pagesVisited.indexOf(active) + 1)) {
+      pagesVisited.push(active);
+      this.setState({ pagesVisited: [...pagesVisited] });
+    }
+  }
 
   renderElement = (item: Element, i: number) => {
     const { active, elements, onPrevLinkClick } = this.props;
+    const { pagesVisited } = this.state;
 
     const currentActiveIndex = elements.findIndex(value => value.title === active);
 
@@ -29,9 +48,11 @@ export default class UikStepper extends Component<Props> {
         <div className={cn(style.element, {
           [style.active]: item.title === active,
           [style.filled]: item.filled,
-          [style.visited]: i < currentActiveIndex,
+          [style.visited]: i < currentActiveIndex || pagesVisited.includes(item.title),
         })}
-        onClick={() => { i < currentActiveIndex && onPrevLinkClick(item.title); }}
+        onClick={() => {
+          (i < currentActiveIndex || pagesVisited.includes(item.title)) && onPrevLinkClick(item.title); 
+        }}
         >
           {item.title}
         </div>
