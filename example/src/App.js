@@ -9,11 +9,12 @@ export default class App extends Component {
       { title: 'elem1', filled: false },
       { title: 'elem2', filled: true },
       { title: 'elem3', filled: false },
+      { title: 'elem4', filled: false },
     ];
     return (
       <div>
-        <UikStepper elements={elements} active='elem3'>Hello</UikStepper>
-        <UikModal close={()=> {}} show={true}>Hello</UikModal>
+        <UikStepper elements={elements} on active='elem3' onLinkClick={title => console.log(title)}>Hello</UikStepper>
+        {false && <UikModal close={()=> {}} show={true}>Hello</UikModal>}
       </div>
     )
   }
