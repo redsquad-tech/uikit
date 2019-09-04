@@ -1,7 +1,8 @@
 import React, { Component, ReactElement, Fragment } from 'react';
 import cn from 'classnames';
 import style from './stepper.module.scss';
-import { UikTopBar, UikTopBarSection } from '../';
+import UikTopBar from '../UikTopBar';
+import UikTopBarSection from '../UikTopBarSection';
 
 interface Element {
   title: string;
