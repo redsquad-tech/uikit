@@ -1,4 +1,4 @@
-import React, { Component, ReactElement } from 'react';
+import React, { Component, ReactElement, Fragment } from 'react';
 import cn from 'classnames';
 import style from './stepper.module.scss';
 import { UikTopBar, UikTopBarSection } from '../';
@@ -24,8 +24,8 @@ export default class UikStepper extends Component<Props> {
     const currentActiveIndex = elements.findIndex(value => value.title === active);
 
     return (
-      <>
-        <div key={i} className={cn(style.element, {
+      <Fragment key={i}>
+        <div className={cn(style.element, {
           [style.active]: item.title === active,
           [style.filled]: item.filled,
           [style.visited]: i < currentActiveIndex,
@@ -34,8 +34,8 @@ export default class UikStepper extends Component<Props> {
         >
           {item.title}
         </div>
-        { i !== elements.length - 1 && <div className={style.line} key={`${i}_line`}/>}
-      </>
+        { i !== elements.length - 1 && <div className={style.line}/>}
+      </Fragment>
     );
   }
 
