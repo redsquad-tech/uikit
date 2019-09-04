@@ -12,7 +12,7 @@ interface Props {
   elements: Element[];
   active: string;
   children?: ReactElement | ReactElement[];
-  childrennClassName?: string;
+  childrenClassName?: string;
 }
 
 export default class UikStepper extends Component<Props> {
@@ -38,7 +38,7 @@ export default class UikStepper extends Component<Props> {
   }
 
   render() {
-    const { elements, children, childrennClassName } = this.props;
+    const { elements, children, childrenClassName } = this.props;
     if (!elements || elements.length === 0) {
       console.error('You pass no elements into UikStepper');
       return null;
@@ -49,7 +49,7 @@ export default class UikStepper extends Component<Props> {
           {elements.map(this.renderElement)}
         </UikTopBarSection>
         {children && (
-          <UikTopBarSection className={childrennClassName}>
+          <UikTopBarSection className={childrenClassName}>
             {children}
           </UikTopBarSection>
         )}
