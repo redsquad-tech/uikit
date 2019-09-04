@@ -39,3 +39,5 @@ export { default as UikRadio } from './UikRadio';
 export { default as UikCheckbox } from './UikCheckbox';
 export { default as UikLoaderDots } from './UikLoaderDots';
 export { default as UikLocalSuggest } from './UikLocalSuggest';
+export { default as UikStepper } from './UikStepper';
+export { default as UikModal } from './UikModal';
