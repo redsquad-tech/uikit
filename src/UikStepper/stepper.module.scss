@@ -8,12 +8,14 @@
   justify-content: center;
   cursor: not-allowed;
   font-size: 14px;
+  flex-shrink: 0;
 }
 .line {
   width: 40px;
   margin: 0 10px;
   height: 1px;
   background-color:#6B6C6F;
+  flex-shrink: 0;
 }
 .active {
   border-bottom: 4px solid #1665D8;
@@ -25,4 +27,11 @@
 .visited {
   color: #3E3F42;
   cursor: pointer;
+}
+.container {
+  width: 100%;
+}
+.elements {
+  max-width: 80%;
+  overflow: scroll;
 }
