@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: not-allowed;
+  cursor: pointer;
   font-size: 14px;
   flex-shrink: 0;
 }
@@ -19,14 +19,12 @@
 }
 .active {
   border-bottom: 4px solid #1665D8;
-  cursor: pointer;
 }
 .filled {
   font-weight: bold;
 }
 .visited {
   color: #3E3F42;
-  cursor: pointer;
 }
 .container {
   width: 100%;
