@@ -4,7 +4,7 @@ import cn from 'classnames';
 import style from './modal.module.scss';
 
 interface Props {
-  children: React.ReactElement | React.ReactElement[];
+  children: any;
   close: () => void;
   className?: string;
   show: boolean;

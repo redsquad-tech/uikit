@@ -1,4 +1,4 @@
-import React, { Component, ReactElement, Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import cn from 'classnames';
 import style from './stepper.module.scss';
 import UikTopBar from '../UikTopBar';
@@ -12,7 +12,7 @@ interface Element {
 interface Props {
   elements: Element[];
   active: string;
-  children?: ReactElement | ReactElement[];
+  children?: any;
   onPrevLinkClick: (link: string) => void;
   childrenClassName?: string;
 }
