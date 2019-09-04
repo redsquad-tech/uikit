@@ -34,7 +34,7 @@ export default class UikStepper extends Component<Props> {
         >
           {item.title}
         </div>
-        { i !== elements.length - 1 && <div className={style.line}/>}
+        { i !== elements.length - 1 && <div className={style.line} key={`${i}_line`}/>}
       </>
     );
   }
