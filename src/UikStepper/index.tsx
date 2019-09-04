@@ -12,13 +12,14 @@ interface Props {
   elements: Element[];
   active: string;
   children?: ReactElement | ReactElement[];
+  onLinkClick: (link: string) => void;
   childrenClassName?: string;
 }
 
 export default class UikStepper extends Component<Props> {
 
   renderElement = (item: Element, i: number) => {
-    const { active, elements } = this.props;
+    const { active, elements, onLinkClick } = this.props;
 
     const currentActiveIndex = elements.findIndex(value => value.title === active);
 
@@ -29,6 +30,7 @@ export default class UikStepper extends Component<Props> {
           [style.filled]: item.filled,
           [style.visited]: i < currentActiveIndex,
         })}
+        onClick={() => onLinkClick(item.title)} 
         >
           {item.title}
         </div>
