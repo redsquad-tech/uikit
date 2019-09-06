@@ -69,8 +69,8 @@ export default class UikStepper extends Component<Props, State> {
       return null;
     }
     return (
-      <UikTopBar className={cn(style.container, { [className!]: !!className })}>
-        <UikTopBarSection className={style.elements}>
+      <UikTopBar className={style.container}>
+        <UikTopBarSection className={cn(style.elements, { [className!]: !!className })}>
           {elements.map(this.renderElement)}
         </UikTopBarSection>
         {children && (
