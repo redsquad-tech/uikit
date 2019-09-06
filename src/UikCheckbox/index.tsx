@@ -32,6 +32,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
     const { onInput } = this.props;
     this.setState({ value: !this.state.value });
     onInput(!this.state.value);
+    e.stopPropagation();
     e.preventDefault();
   }
 
