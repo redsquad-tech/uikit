@@ -31,6 +31,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
       className,
       name,
       label,
+      value,
     } = this.props;
 
     return (
@@ -41,7 +42,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
         <input
           name={ name }
           type="checkbox"
-          checked={this.state.value}
+          checked={ value }
           onChange={this.changeHandler}
         />
         { label && (
