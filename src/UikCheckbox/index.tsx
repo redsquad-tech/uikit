@@ -13,27 +13,17 @@ interface UikCheckboxProps {
   label: React.ReactNode;
   name?: string;
   className?: string;
-  value?: boolean;
+  value: boolean;
   onInput: (value: boolean) => void;
 }
 
 class UikCheckbox extends React.Component<UikCheckboxProps, State> {
 
-  constructor(props: UikCheckboxProps) {
-    super(props);
-    this.state = { value: Boolean(this.props.value) };
-  }
-
-  componentWillReceiveProps(nextProps: UikCheckboxProps) {
-    typeof nextProps.value === 'boolean' && this.setState({ value: nextProps.value });
-  }
-
   changeHandler = (e: React.SyntheticEvent) => {
-    const { onInput } = this.props;
-    this.setState({ value: !this.state.value });
-    onInput(!this.state.value);
     e.stopPropagation();
     e.preventDefault();
+    const { onInput, value } = this.props;
+    onInput(!value);
   }
 
   render() {
