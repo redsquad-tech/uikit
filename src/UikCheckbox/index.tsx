@@ -37,8 +37,8 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
         <input
           name={ name }
           type="checkbox"
-          defaultChecked={ value }
-          onClick={this.changeHandler}
+          checked={ value }
+          onChange={this.changeHandler}
         />
         { label && (
           <div className={s.header} onClick={this.changeHandler}>

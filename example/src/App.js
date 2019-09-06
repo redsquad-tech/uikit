@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import { UikStepper, UikModal } from 'uikit'
+import { UikStepper, UikModal, UikCheckbox } from 'uikit'
 
 export default class App extends Component {
+  state = { check: false }
 
   render () {
     const elements = [
@@ -15,6 +16,7 @@ export default class App extends Component {
       <div>
         <UikStepper elements={elements} on active='elem3' onLinkClick={title => console.log(title)}>Hello</UikStepper>
         {false && <UikModal close={()=> {}} show={true}>Hello</UikModal>}
+        <UikCheckbox label='check' value={this.state.check} onInput={value => this.setState({check: !this.state.check})}/>
       </div>
     )
   }
