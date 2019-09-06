@@ -19,9 +19,7 @@ interface UikCheckboxProps {
 
 class UikCheckbox extends React.Component<UikCheckboxProps, State> {
 
-  changeHandler = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
+  changeHandler = () => {
     const { onInput, value } = this.props;
     onInput(!value);
   }
@@ -40,7 +38,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
           name={ name }
           type="checkbox"
           checked={ value }
-          onChange={this.changeHandler}
+          onClick={this.changeHandler}
         />
         { label && (
           <div className={s.header} onClick={this.changeHandler}>
