@@ -13,6 +13,7 @@ interface Props {
   elements: Element[];
   active: string;
   children?: any;
+  className?: string;
   onPrevLinkClick: (link: string) => void;
   childrenClassName?: string;
 }
@@ -38,7 +39,7 @@ export default class UikStepper extends Component<Props, State> {
   }
 
   renderElement = (item: Element, i: number) => {
-    const { active, elements, onPrevLinkClick } = this.props;
+    const { active, elements, onPrevLinkClick, className } = this.props;
     const { pagesVisited } = this.state;
 
     const currentActiveIndex = elements.findIndex(value => value.title === active);
@@ -49,6 +50,7 @@ export default class UikStepper extends Component<Props, State> {
           [style.active]: item.title === active,
           [style.filled]: item.filled,
           [style.visited]: i < currentActiveIndex || pagesVisited.includes(item.title),
+          [className!]: !!className,
         })}
         onClick={() => {
           (i < currentActiveIndex || pagesVisited.includes(item.title)) && onPrevLinkClick(item.title); 
