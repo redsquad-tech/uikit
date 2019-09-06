@@ -21,6 +21,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
 
   changeHandler = (e: React.SyntheticEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     const { onInput, value } = this.props;
     onInput(!value);
   }
