@@ -25,7 +25,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
   }
 
   componentWillReceiveProps(nextProps: UikCheckboxProps) {
-    nextProps.value && this.setState({ value: nextProps.value });
+    typeof nextProps.value === 'boolean' && this.setState({ value: nextProps.value });
   }
 
   changeHandler = (e: React.SyntheticEvent) => {
