@@ -17,7 +17,7 @@ interface UikCheckboxProps {
   onInput: (value: boolean) => void;
 }
 
-class UikCheckbox extends React.PureComponent<UikCheckboxProps, State> {
+class UikCheckbox extends React.Component<UikCheckboxProps, State> {
 
   constructor(props: UikCheckboxProps) {
     super(props);
