@@ -39,7 +39,7 @@ export default class UikStepper extends Component<Props, State> {
   }
 
   renderElement = (item: Element, i: number) => {
-    const { active, elements, onPrevLinkClick, className } = this.props;
+    const { active, elements, onPrevLinkClick } = this.props;
     const { pagesVisited } = this.state;
 
     const currentActiveIndex = elements.findIndex(value => value.title === active);
@@ -50,7 +50,6 @@ export default class UikStepper extends Component<Props, State> {
           [style.active]: item.title === active,
           [style.filled]: item.filled,
           [style.visited]: i < currentActiveIndex || pagesVisited.includes(item.title),
-          [className!]: !!className,
         })}
         onClick={() => {
           (i < currentActiveIndex || pagesVisited.includes(item.title)) && onPrevLinkClick(item.title); 
@@ -64,13 +63,13 @@ export default class UikStepper extends Component<Props, State> {
   }
 
   render() {
-    const { elements, children, childrenClassName } = this.props;
+    const { elements, children, childrenClassName, className } = this.props;
     if (!elements || elements.length === 0) {
       console.error('You pass no elements into UikStepper');
       return null;
     }
     return (
-      <UikTopBar className={style.container}>
+      <UikTopBar className={cn(style.container, { [className!]: !!className })}>
         <UikTopBarSection className={style.elements}>
           {elements.map(this.renderElement)}
         </UikTopBarSection>
