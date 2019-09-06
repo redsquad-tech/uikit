@@ -21,7 +21,6 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
 
   changeHandler = (e: React.SyntheticEvent) => {
     e.stopPropagation();
-    e.preventDefault();
     const { onInput, value } = this.props;
     onInput(!value);
   }
@@ -35,10 +34,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
     } = this.props;
 
     return (
-      <div
-        className={cn(s.checkbox, className)}
-        onClick={this.changeHandler}
-      >
+      <div className={cn(s.checkbox, className)}>
         <input
           name={ name }
           type="checkbox"
@@ -46,7 +42,7 @@ class UikCheckbox extends React.Component<UikCheckboxProps, State> {
           onChange={this.changeHandler}
         />
         { label && (
-          <div className={s.header}>
+          <div className={s.header} onClick={this.changeHandler}>
             <UikContentTitle>
               {label}
             </UikContentTitle>
