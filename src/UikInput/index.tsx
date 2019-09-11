@@ -122,7 +122,6 @@ class Input extends Component<UikInputProps, State> {
                 this.setState({ value, errorMessage: this.props.errorMessage });
                 this.props.onInput && this.props.onInput(value);
               } else {
-                console.log('');
                 this.setState({ value, errorMessage: this.props.valueCheck.noMatchMessage });
               }
               e.preventDefault();
