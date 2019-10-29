@@ -7,7 +7,7 @@ import UikTopBarSection from '../UikTopBarSection';
 interface Element {
   title: string;
   filled: boolean;
-  error: boolean;
+  error?: boolean;
 }
 
 interface Props {
