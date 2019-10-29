@@ -7,6 +7,7 @@ import UikTopBarSection from '../UikTopBarSection';
 interface Element {
   title: string;
   filled: boolean;
+  error: boolean;
 }
 
 interface Props {
@@ -49,6 +50,7 @@ export default class UikStepper extends Component<Props, State> {
         <div className={cn(style.element, {
           [style.active]: item.title === active,
           [style.filled]: item.filled,
+          [style.error]: item.error
           [style.visited]: i < currentActiveIndex || pagesVisited.includes(item.title),
         })}
         onClick={() => {
