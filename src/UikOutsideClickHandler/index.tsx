@@ -11,7 +11,7 @@ import * as React from 'react';
 
 interface UikOutsideClickHandlerProps {
   children?: React.ReactNode;
-  onOutsideClick: (e: Event) => void;
+  onOutsideClick?: (e: Event) => void;
   onOutsideScroll?: boolean;
   onWindowResize?: boolean;
 }

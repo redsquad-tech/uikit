@@ -38,7 +38,9 @@ interface UikButtonProps {
   onClick?: React.MouseEventHandler<HTMLElement>;
 }
 
-export default (props: UikButtonProps) => {
+type Props = UikButtonProps & React.ButtonHTMLAttributes<any>;
+
+export default (props: Props) => {
   const {
     primary,
     error,
